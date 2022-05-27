@@ -21,9 +21,4 @@ public class WeatherManager {
     public Weather getWeather(@RequestParam(value = "city", defaultValue = "Mainz") String city) {
         return repository.findWeatherByCity(city);
     }
-
-    @GetMapping("/test")
-    public String testOutput() {
-        return "Test";
-    }
 }
