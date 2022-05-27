@@ -1,5 +1,7 @@
-package de.qaware.springbootweather;
+package de.qaware.springbootweather.service;
 
+import de.qaware.springbootweather.model.Weather;
+import de.qaware.springbootweather.provider.WeatherProvider;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -7,7 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WeatherRepository implements ApplicationContextAware {
+public class WeatherService implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 

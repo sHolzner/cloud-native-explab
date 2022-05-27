@@ -1,5 +1,7 @@
-package de.qaware.springbootweather;
+package de.qaware.springbootweather.controller;
 
+import de.qaware.springbootweather.service.WeatherService;
+import de.qaware.springbootweather.model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,17 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Component("weatherManager")
-public class WeatherManager {
+public class WeatherController {
 
-    private final WeatherRepository repository;
+    private final WeatherService weatherService;
 
     @Autowired
-    public WeatherManager(WeatherRepository repository) {
-        this.repository = repository;
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/weather")
     public Weather getWeather(@RequestParam(value = "city", defaultValue = "Mainz") String city) {
-        return repository.findWeatherByCity(city);
+        return weatherService.findWeatherByCity(city);
     }
 }

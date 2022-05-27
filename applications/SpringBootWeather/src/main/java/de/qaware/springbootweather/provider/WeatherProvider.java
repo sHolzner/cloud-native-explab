@@ -1,4 +1,4 @@
-package de.qaware.springbootweather;
+package de.qaware.springbootweather.provider;
 
 import org.springframework.stereotype.Component;
 
