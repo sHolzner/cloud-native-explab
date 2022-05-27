@@ -1,4 +1,4 @@
-package com.example.springboothelloworld;
+package de.qaware.springboothelloworld;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
