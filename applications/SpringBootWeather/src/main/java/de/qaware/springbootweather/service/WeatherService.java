@@ -10,6 +10,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+import java.time.Instant;
+
 @Component
 public class WeatherService implements ApplicationContextAware {
 
@@ -24,12 +27,14 @@ public class WeatherService implements ApplicationContextAware {
             Weather weather = new Weather();
             weather.setCity(city);
             weather.setWeather(provider.getWeather());
+            weather.setDate(Date.from(Instant.now()));
             return weather;
         } catch(NoSuchBeanDefinitionException e) {
             System.out.println("ERROR! This city is not yet defined");
             Weather weather = new Weather();
             weather.setCity(city);
             weather.setWeather("unknown");
+            weather.setDate(Date.from(Instant.now()));
             return weather;
         }
     }
@@ -38,6 +43,7 @@ public class WeatherService implements ApplicationContextAware {
         Weather weatherData = new Weather();
         weatherData.setCity(city);
         weatherData.setWeather(weather);
+        weatherData.setDate(Date.from(Instant.now()));
         weatherRepository.save(weatherData);
         return "Added succesfully";
     }

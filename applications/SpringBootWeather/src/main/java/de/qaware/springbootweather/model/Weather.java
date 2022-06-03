@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 import java.util.StringJoiner;
 
 @Entity
@@ -14,6 +15,7 @@ public class Weather {
     private Integer id;
     private String city;
     private String weather;
+    private Date date;
 
     public Integer getId() {
         return id;
@@ -39,11 +41,20 @@ public class Weather {
         this.weather = weather;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Weather.class.getSimpleName() + "[", "]")
                 .add("city='" + city + "'")
                 .add("weather='" + weather + "'")
+                .add("date='" + date.toString() + "'")
                 .toString();
     }
 }
