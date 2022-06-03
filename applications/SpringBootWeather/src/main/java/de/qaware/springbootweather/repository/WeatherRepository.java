@@ -1,4 +1,4 @@
-package de.qaware.springbootweather;
+package de.qaware.springbootweather.repository;
 
 import de.qaware.springbootweather.model.Weather;
 import org.springframework.data.repository.CrudRepository;

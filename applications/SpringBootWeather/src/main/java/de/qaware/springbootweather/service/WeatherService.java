@@ -1,8 +1,8 @@
 package de.qaware.springbootweather.service;
 
-import de.qaware.springbootweather.WeatherRepository;
 import de.qaware.springbootweather.model.Weather;
 import de.qaware.springbootweather.provider.WeatherProvider;
+import de.qaware.springbootweather.repository.WeatherRepository;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
