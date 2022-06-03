@@ -7,6 +7,7 @@
 <body>
     <p><a>Greetings</a></p>
 
+    <p>
     <form action="/weather" method="GET" id="cityForm">
         <div>
             <label for="cityField">Where do you live?</label>
@@ -14,5 +15,26 @@
             <button>How is the weather!?</button>
         </div>
     </form>
+    </p>
+
+    <p>
+    <form action="/add" method="POST" id="cityAddForm">
+        <div>
+            <label for="cityAddField">Which city do you want to add?</label>
+            <input name="city" id="cityAddField">
+            <label for="weatherAddField">How is the weather?</label>
+            <input name="weather" id="weatherAddField">
+            <button>Add city!</button>
+        </div>
+    </form>
+    </p>
+
+    <p>
+    <form action="/list" method="GET" id="listForm">
+        <div>
+            <button>Get cities!</button>
+        </div>
+    </form>
+    </p>
 </body>
 </html>
