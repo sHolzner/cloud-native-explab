@@ -1,0 +1,53 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    db: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: db
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        db: db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: weather_db
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_USER
+              value: springuser
+          image: postgres:12
+          name: db
+          ports:
+            - containerPort: 5432
+          resources: {}
+      restartPolicy: Always
+status: {}
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    db: db
+  name: db
+spec:
+  ports:
+    - name: "5432"
+      port: 5432
+      targetPort: 5432
+  selector:
+    db: db
+status:
+  loadBalancer: {}
