@@ -3,6 +3,8 @@ package de.qaware.springbootweather.service;
 import de.qaware.springbootweather.model.Weather;
 import de.qaware.springbootweather.provider.WeatherProvider;
 import de.qaware.springbootweather.repository.WeatherRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import java.time.Instant;
 @Component
 public class WeatherService implements ApplicationContextAware {
 
+    Logger logger = LoggerFactory.getLogger(WeatherService.class);
     private ApplicationContext applicationContext;
 
     @Autowired
@@ -28,9 +31,10 @@ public class WeatherService implements ApplicationContextAware {
             weather.setCity(city);
             weather.setWeather(provider.getWeather());
             weather.setDate(Date.from(Instant.now()));
+            logger.info(String.format("Weather for %s successfully retrieved!", city));
             return weather;
         } catch(NoSuchBeanDefinitionException e) {
-            System.out.println("ERROR! This city is not yet defined");
+            logger.error(String.format("ERROR! The weather for %s could not be retrieved!", city));
             Weather weather = new Weather();
             weather.setCity(city);
             weather.setWeather("unknown");
@@ -45,7 +49,8 @@ public class WeatherService implements ApplicationContextAware {
         weatherData.setWeather(weather);
         weatherData.setDate(Date.from(Instant.now()));
         weatherRepository.save(weatherData);
-        return "Added succesfully";
+        logger.info(String.format("Added %s successfully to the database", weatherData));
+        return "Added successfully";
     }
 
     public Weather getWeather(Integer id) {
@@ -53,7 +58,9 @@ public class WeatherService implements ApplicationContextAware {
     }
 
     public Iterable<Weather> listWeather() {
-        return weatherRepository.findAll();
+        Iterable<Weather> weatherData = weatherRepository.findAll();
+        logger.info("Retrieved all weather data from the database.");
+        return weatherData;
     }
 
     @Override
