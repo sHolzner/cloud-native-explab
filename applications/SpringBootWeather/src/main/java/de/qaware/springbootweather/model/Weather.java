@@ -51,10 +51,10 @@ public class Weather {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Weather.class.getSimpleName() + "[", "]")
-                .add("city='" + city + "'")
-                .add("weather='" + weather + "'")
-                .add("date='" + date.toString() + "'")
+        return new StringJoiner(" ")
+                .add("The weather in '" + city + "'")
+                .add("is currently: '" + weather + "'.")
+                .add("Last update: '" + date.toString() + "'")
                 .toString();
     }
 }

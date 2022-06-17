@@ -24,22 +24,19 @@ class SpringBootWeatherApplicationTests {
     @Test
     void shouldRetrieveCorrectWeatherDEFAULT() {
         String output = trt.getForObject("http://localhost:" + port + "/weather", String.class);
-        assertThat(output).contains("\"city\":\"Mainz\"");
-        assertThat(output).contains("\"weather\":\"Sunshine\"");
+        assertThat(output).contains("The weather in 'Mainz' is currently: 'Sunshine'. Last update:");
     }
 
     @Test
     void shouldRetrieveCorrectWeatherRosenheim() {
         String output = trt.getForObject("http://localhost:" + port + "/weather?city=Rosenheim", String.class);
-        assertThat(output).contains("\"city\":\"Rosenheim\"");
-        assertThat(output).contains("\"weather\":\"Mega Sunshine\"");
+        assertThat(output).contains("The weather in 'Rosenheim' is currently: 'Mega Sunshine'. Last update:");
     }
 
     @Test
     void shouldRetrieveCorrectWeatherMunich() {
         String output = trt.getForObject("http://localhost:" + port + "/weather?city=Munich", String.class);
-        assertThat(output).contains("\"city\":\"Munich\"");
-        assertThat(output).contains("\"weather\":\"Sunny sunny sunny\"");
+        assertThat(output).contains("The weather in 'Munich' is currently: 'Sunny sunny sunny'. Last update:");
     }
 
     @Test
