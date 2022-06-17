@@ -32,7 +32,7 @@ type once you reach the SpringBootWeather folder in your command line:
 tilt up
 ```
 
-and the application should be accessible at [localhost:8000](localhost:8000)
+and the application should be accessible at [localhost:8081](localhost:8081)
 
 Alternatively start the application as a local multi-container by running the command:
 

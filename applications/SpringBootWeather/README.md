@@ -158,6 +158,10 @@ docker container and therefore the database designed above.
 
 With this and the ``` docker-compose up ``` command, now a containerized version of your application can be created.
 
+To enable a better overview in case of this application an additional .env file was added containing values of our
+docker-compose file, meaning an easier change of all variables inside this file. For a better understanding look into the .env
+file as well as the docker-compose.yml of this application.
+
 Congrats!!!
 
 ### Kubernetes
@@ -284,10 +288,10 @@ kubectl apply -f <yaml-file>
 To create the app of this example open the SpringBootWeather folder and type the commands:
 
 ```
-kubectl apply -f weather_db_deployment
-kubectl apply -f weather_db_service
-kubectl apply -f weather_app_deployment
-kubectl apply -f weather_app_service
+kubectl apply -f weather_db_deployment.yaml
+kubectl apply -f weather_db_service.yaml
+kubectl apply -f weather_app_deployment.yaml
+kubectl apply -f weather_app_service.yaml
 ```
 
 After retrieving information of running pods, with the line
