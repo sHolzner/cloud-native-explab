@@ -1,4 +1,4 @@
-# Deployment
+# App deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,14 +16,20 @@ spec:
       creationTimestamp: null
     spec:
       containers:
+        # environment variables analog to docker-compose:
         - env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://db:5432/weather_db
+          # docker image used:
           image: springbootweather_app
+          # The following line forces tilt to use the local image and not try to pull one from docker hub.
           imagePullPolicy: Never
+          # name of container:
           name: app
           ports:
+            # putting forward a container for localhost:
             - containerPort: 8080
           resources: {}
+      # sets a restart policy if app gets started before db is fully online:
       restartPolicy: Always
 status: {}

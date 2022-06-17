@@ -18,6 +18,7 @@ spec:
         db: db
     spec:
       containers:
+        # environment variables analog to docker-compose:
         - env:
             - name: POSTGRES_DB
               value: weather_db
@@ -25,10 +26,15 @@ spec:
               value: password
             - name: POSTGRES_USER
               value: springuser
+          # docker image used:
           image: postgres:12
+          # No ImagePullPolicy given, cause this image is accessible online
+          # name of the container:
           name: db
           ports:
+            # Port forwarding for the database
             - containerPort: 5432
           resources: {}
+      # restart policy in case the db crashes
       restartPolicy: Always
 status: {}
