@@ -3,15 +3,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
+  # name of the pod created in deployment
   name: app
 spec:
   replicas: 1
   selector:
     matchLabels:
+      # label to connect this deployment to the given service
       springbootweather: web
   template:
     metadata:
       labels:
+        # label to connect this deployment to the given service
         springbootweather: web
       creationTimestamp: null
     spec:
@@ -29,6 +32,7 @@ spec:
           ports:
             # putting forward a container for localhost:
             - containerPort: 8080
+              name: app-target-port
           resources: {}
       # sets a restart policy if app gets started before db is fully online:
       restartPolicy: Always

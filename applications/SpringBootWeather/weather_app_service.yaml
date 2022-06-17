@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
+    # label to connect this service to the given deployment
     springbootweather: web
   creationTimestamp: null
   # name of service:
@@ -10,10 +11,14 @@ metadata:
 spec:
   ports:
     # port forwarding of the service
-    - name: "8081"
+    - protocol: TCP
+      # port of the service
       port: 8081
+      # port of the pod, which matches the given label springbootweather: web. Alternatively this command could use the name given in deployment:
+      # targetPort: app-target-port
       targetPort: 8080
   selector:
+    # label to connect this service to the given deployment
     springbootweather: web
 status:
   loadBalancer: {}

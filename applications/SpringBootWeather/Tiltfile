@@ -15,5 +15,5 @@ k8s_yaml(['weather_app_deployment.yaml', 'weather_app_service.yaml'])
 # docker build -t springbootweather_app .
 docker_build('springbootweather_app', '.')
 
-# maps the port of the application to localhost:8000
-k8s_resource('app', port_forwards='8000:8080')
+# maps the port of the application to localhost:8081
+k8s_resource('app', port_forwards='8081:8080')
