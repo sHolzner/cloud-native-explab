@@ -7,4 +7,8 @@ public interface WeatherRepository extends CrudRepository<Weather, Integer> {
 
     Weather findWeatherById(Integer Id);
 
+    Iterable<Weather> findWeatherByCity(String city);
+
+    void deleteWeatherById(Integer id);
+
 }
