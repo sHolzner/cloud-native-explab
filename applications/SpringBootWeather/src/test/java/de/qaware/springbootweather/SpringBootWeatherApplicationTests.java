@@ -45,7 +45,7 @@ class SpringBootWeatherApplicationTests {
     @Test
     void shouldAddToDataBaseSuccessfully() {
         String output = trt.postForObject("http://localhost:" + port + "/add?city=London&weather=Rainy", null, String.class);
-        assertThat(output).isEqualTo("Added succesfully");
+        assertThat(output).isEqualTo("Added successfully");
     }
 
     @Test
