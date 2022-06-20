@@ -9,8 +9,8 @@ jobs:
   Hello-World:
     runs-on: ubuntu-latest
     steps:
-      - run echo "Hello from Github Actions!"
+      - run: echo "Hello from Github Actions!"
       - name: Check out repo
         uses: actions/checkout@v3
-      - run echo "code has been cloned to the machine"
-      - run ls ${{ github.workspace }}
+      - run: "echo code has been cloned to the machine"
+      - run: ls ${{ github.workspace }}
