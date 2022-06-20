@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'applications/DotnetHello/**'
+  workflow_dispatch:
+
 jobs:
   Hello-World:
     runs-on: ubuntu-latest
